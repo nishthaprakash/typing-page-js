@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortoise App</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: rgb(7, 7, 182);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .timer {
+            position: absolute;
+            top: 0rem;
+            font-size: 5rem;
+            color: white;
+        }
+        body,
+        .quote-input {
+            font-family: sans-serif;
+        }
+
+        .container {
+            background-color: aliceblue;
+            padding: 1rem;
+            border-radius: .5rem;
+            width: 700px;
+            max-width: 90%;
+            height: 200px;
+        }
+
+        .quote-input {
+            width: 100%;
+            height: 8rem;
+            margin-top: 12px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timer" id="timer" oninput="timer()">0</div>
+    <div class="container">
+        <div class="quote-display" id="quoteDisplay"></div>
+        <input id="quoteInput" class="quote-input" placeholder="Enter Char" autofocus></input>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let result;
+    let randomword = document.getElementById('quoteDisplay')
+    function makeid(length) {
+        result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        randomword.innerText = result;
+        return result;
+
+    }
+
+    console.log(makeid(1));
+
+
+    document.getElementById('quoteInput').addEventListener('keypress', enter)
+
+    function enter() {
+
+        let correct = true;
+        let a = document.getElementById('quoteInput').value
+
+        if (a == randomword.innerText) {
+            console.log("complete")
+
+
+        }
+        else {
+            correct = false
+
+
+        }
+
+        if (correct) makeid(1)
+
+     
+    }
+    let setTimer = document.getElementById("timer")
+    let startTime;
+    function timer() {
+
+        setTimer.innerText = 0;
+        startTime = new Date();
+        let id = setInterval(() => {
+            setTimer.innerText = getTimerTime()
+        }, 1000)
+    }
+    function getTimerTime() {
+        return Math.floor((new Date() - startTime) / 1000)
+    }
+
+    document.getElementById('quoteInput').addEventListener('click', timerstart)
+    function timerstart() {
+        timer();
+
+    }
+
+</script>

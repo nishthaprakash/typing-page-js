@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(7, 7, 182);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+
+}
+.timer{
+    position: absolute;
+    top: 0rem;
+    font-size: 5rem;
+    color: white;
+}
+body, .quote-input{
+    font-family: sans-serif;
+}
+.container{
+    background-color: aliceblue;
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 700px;
+    max-width: 90%;
+    height: 200px;
+}
+.quote-input{
+    width: 100%;
+    height: 8rem;
+    margin-top: 12px;
+    padding: 10px 15px;
+}
